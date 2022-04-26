@@ -221,6 +221,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
    G1 += vel;
 
+   //摩擦力
+   float first_Speed = 40;
+   float Kg = 10;
+   float N = Kg * 0.08;
+
     while (true)  // ゲームループ
     {
 
@@ -236,7 +241,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
       G += acceleration_g;
       G1 += acceleration_g;
 
-      Y += G;
+      //Y += G;
+     
+      X += first_Speed;
+      
+      if(first_Speed>0)first_Speed -= N;
+      else if (first_Speed < 0)
+      {
+          first_Speed = 0;
+      }
+      //X -= N;
 
       X1 += 10;
       Y1 += G1;
